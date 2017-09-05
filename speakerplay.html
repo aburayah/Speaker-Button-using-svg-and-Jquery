@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .pause,
+        .play {
+            visibility: hidden;
+        }
+        
+        .cls-1 {
+            fill: #121000;
+        }
+        
+        .cls-2,
+        .cls-5 {
+            fill: #fff;
+            stroke: #000;
+            stroke-miterlimit: 10;
+        }
+        
+        .cls-2,
+        .cls-3,
+        .cls-4 {
+            opacity: 0.41;
+        }
+       
+        .cls-3 {
+            stroke-width: 3px;
+            stroke: #000;
+        }
+        .focus{
+            color: red;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+   <div></div>
+  
+    <div>
+        <h1> Head phone icon </h1>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-400 -100 1000 350">
+           
+            <title>Play and pause speakers buttons icon </title>
+            
+            <g id="speaker" class="speaker">
+                <path id="ARC" d="M320,413.76c34.7,0,62.8,37.3,62.8,83.2a105.13,105.13,0,0,1-2.2,21.7,99.8,99.8,0,0,0,6.8-36.2c0-45.9-30.2-83.2-67.4-83.2s-67.5,37.2-67.5,83.1a97.27,97.27,0,0,0,6.7,36.2,105.72,105.72,0,0,1-2.1-21.7C257.05,450.86,285.25,413.66,320,413.76Z" transform="translate(-219.17 -382.83)" />
+                <rect id="LSPK" class="cls-1" x="38.83" y="96.89" width="21.33" height="66.95" rx="10.67" ry="10.67" />
+                <rect id="RSPK" class="cls-1" x="141.17" y="96.89" width="21.33" height="66.95" rx="10.67" ry="10.67" />
+            </g>
+            
+            <g id="base">
+                <text id="instructions"  x="50" y="-30"> Click  Aux to start</text>
+               
+                <circle id="base-2" data-name="base" class="cls-2" cx="100.5" cy="100.5" r="100" />
+            </g>
+            <g id="offLine">
+                <line id="line" class="cls-3" x1="23.23" y1="163.98" x2="171.21" y2="29.79" />
+            </g>
+            <g id="pause" class="pause" onclick="stop()">
+                <g class="cls-4">
+                    <rect class="cls-5" x="108.32" y="85.08" width="18.6" height="40.73" />
+                    <rect class="cls-5" x="74.42" y="84.47" width="18.6" height="40.73" />
+                </g>
+            </g>
+            <g id="play" onclick="paly()" class="play">
+                <path class="cls-2" d="M345.48,487.27c-8.92,6.79-52,20.36-52,20.36V466.91s43.33,13.58,52,20.36Z" transform="translate(-219.17 -382.83)" />
+            </g>
+            <g class="auxOn" transform="translate(10,-135)" onclick="AuxOn()">
+                <rect id="RSPK" x="-50.17" y="100.89" width="25.33" height="25.95" rx="10.67" ry="10.67" />
+                <text x="-100.17" y="100.89"> Aux On </text>
+            </g>
+             <g class="auxOff" transform="translate(10,-135)" onclick="AuxOff()">
+                <rect id="RSPK" x="-50.17" y="100.89" width="25.33" height="25.95" rx="10.67" ry="10.67" />
+                <text x="-100.17" y="100.89">Aux Off</text>
+            </g>
+            
+
+
+        </svg>
+    </div>
+</body>
+<script>
+   
+    function $(sel) {
+        return document.querySelector(sel);
+    }
+ /*   <!--       document.querySelector("#speaker").style.visibility ="visible";-->*/
+
+ /*   <!--       $(".speaker").style.fill = "red";-->*/
+        
+    $(".auxOff").style.visibility = "hidden";
+    function AuxOn(){
+        $("#instructions").innerHTML="click triangle to play";
+        $(".auxOn").style.visibility = "hidden";
+        $(".auxOff").style.visibility ="visible";
+        $(".play").style.visibility = "visible";
+        $(".cls-3").style.visibility = "hidden";
+        $(".pause").style.visibility = "hidden";
+       
+       
+    }
+ function AuxOff() {
+     $(".auxOn").style.visibility = "visible";
+   
+     $(".auxOff").style.visibility = "hidden";
+        $(".play").style.visibility = " hidden";
+        $(".cls-3").style.visibility = "visible";
+        $(".pause").style.visibility = "hidden ";
+      $("#base-2").style.fill = "white";
+      $("#instructions").innerHTML="click Aux to start";
+     
+    }
+    function paly() {
+        $("#play").style.visibility = "hidden";
+        $(".pause").style.visibility = "visible";
+        $("#base-2").style.fill = "green";
+         if( $(".pause").style.visibility == "visible"){
+            $("#instructions").innerHTML="click squares to pause";
+        }
+    }
+
+    function stop() {
+        $("#play").style.visibility = "visible";
+        $(".pause").style.visibility = "hidden";
+        $("#base-2").style.fill = "red";
+         $("#instructions").innerHTML="click triangle to play";
+    }
+    
+    
+</script>
+
+</html>
